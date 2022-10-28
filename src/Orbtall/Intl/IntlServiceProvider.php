@@ -4,7 +4,7 @@ namespace Orbtall\Intl;
 
 use Illuminate\Support\ServiceProvider;
 
-class LaravelLocalizationServiceProvider extends ServiceProvider
+class IntlServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application events.
