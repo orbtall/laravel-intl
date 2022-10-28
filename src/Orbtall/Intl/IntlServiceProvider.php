@@ -80,7 +80,7 @@ class IntlServiceProvider extends ServiceProvider
             return new Intl();
         });
 
-        $this->app->alias(Intl::class, 'laravellocalization');
+        $this->app->alias(Intl::class, 'intl');
     }
 
     /**
@@ -88,14 +88,14 @@ class IntlServiceProvider extends ServiceProvider
      */
     protected function registerCommands()
     {
-        $this->app->singleton('laravellocalizationroutecache.cache', Commands\RouteTranslationsCacheCommand::class);
-        $this->app->singleton('laravellocalizationroutecache.clear', Commands\RouteTranslationsClearCommand::class);
-        $this->app->singleton('laravellocalizationroutecache.list', Commands\RouteTranslationsListCommand::class);
+        $this->app->singleton('intlroutecache.cache', Commands\RouteTranslationsCacheCommand::class);
+        $this->app->singleton('intlroutecache.clear', Commands\RouteTranslationsClearCommand::class);
+        $this->app->singleton('intlroutecache.list', Commands\RouteTranslationsListCommand::class);
 
         $this->commands([
-            'laravellocalizationroutecache.cache',
-            'laravellocalizationroutecache.clear',
-            'laravellocalizationroutecache.list',
+            'intlroutecache.cache',
+            'intlroutecache.clear',
+            'intlroutecache.list',
         ]);
     }
 }
