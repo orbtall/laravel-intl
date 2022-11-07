@@ -299,7 +299,7 @@ class Intl
 
         $base_path = $this->request->getBaseUrl();
         $parsed_url = parse_url($url);
-        $url_locale = Locale::where('country_id', 1)->first();
+        $url_locale = Locale::first();
 
         if (!$parsed_url || empty($parsed_url['path'])) {
             $path = $parsed_url['path'] = '';
@@ -474,7 +474,7 @@ class Intl
         if (Schema::hasTable('locales') && Schema::hasTable('countries') && Schema::hasTable('languages') && $this->configRepository->get('intl.driver') == 'database') {
             $locales = [];
             foreach (Locale::get() as $locale) {
-                $locales[$locale->country->code . '-' . $locale->language->code] = ['id' => $locale->id, 'name' => $locale->country->name, 'name_native' => $locale->country->name_native, 'script' => $locale->language->script, 'language' => $locale->language->name, 'regional' => $locale->language->code . '_' . strtoupper($locale->country->code), 'region_code' => $locale->country->region->code , 'region_name' => $locale->country->region->name];
+                $locales[$locale->country->code . '-' . $locale->language->code] = ['uuid' => $locale->uuid, 'name' => $locale->country->name, 'name_native' => $locale->country->name_native, 'script' => $locale->language->script, 'language' => $locale->language->name, 'regional' => $locale->language->code . '_' . strtoupper($locale->country->code), 'region_code' => $locale->country->region->code , 'region_name' => $locale->country->region->name];
             }
         } else {
             $locales = $this->configRepository->get('intl.supportedLocales');
@@ -515,9 +515,9 @@ class Intl
      *
      * @return string current locale id
      */
-    public function getCurrentLocaleId()
+    public function getCurrentLocaleUuid()
     {
-        return $this->supportedLocales[$this->getCurrentLocale()]['id'];
+        return $this->supportedLocales[$this->getCurrentLocale()]['uuid'];
     }
 
     /**
@@ -646,9 +646,9 @@ class Intl
      *
      * @return string current region id
      */
-    public function getCurrentRegionId()
+    public function getCurrentRegionUuid()
     {
-        return $this->supportedLocales[$this->getCurrentLocale()]['region_id'];
+        return $this->supportedLocales[$this->getCurrentLocale()]['region_uuid'];
     }
 
     /**

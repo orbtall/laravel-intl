@@ -11,8 +11,12 @@ class Region extends Model {
 
     protected $table = 'regions';
 
+    protected $primaryKey = 'uuid';
+
+    protected $keyType = 'string';
+
     public function countries() {
-        return $this->hasMany(Country::class, 'id', 'region_id');
+        return $this->hasMany(Country::class, 'id', 'region_uuid');
     }
 
 }

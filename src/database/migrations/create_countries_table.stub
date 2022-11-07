@@ -13,17 +13,17 @@ class CreateCountriesTable extends Migration {
      */
     public function up() {
         Schema::create('countries', function (Blueprint $table) {
-            
-            $table->id();
-           
+
+            $table->uuid('uuid')->unique();
+
             $table->string('code', 2);
             $table->string('name', 100);
-            $table->string('native_name', 100);
-            $table->unsignedBigInteger('region_id');
-            
+            $table->string('name_native', 100);
+            $table->uuid('region_uuid');
+
             $table->timestamps();
-            
-            $table->foreign('region_id')->references('id')->on('regions');
+
+            $table->foreign('region_uuid')->references('uuid')->on('regions');
 
             $table->unique('code');
 
@@ -38,5 +38,5 @@ class CreateCountriesTable extends Migration {
     public function down() {
         Schema::dropIfExists('countries');
     }
-    
+
 }

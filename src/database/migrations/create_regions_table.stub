@@ -13,12 +13,12 @@ class CreateRegionsTable extends Migration {
      */
     public function up() {
         Schema::create('regions', function (Blueprint $table) {
-            
-            $table->id();
-           
+
+            $table->uuid('uuid')->unique();
+
             $table->string('code');
             $table->string('name');
-            
+
             $table->timestamps();
 
             $table->unique('code');
@@ -34,5 +34,5 @@ class CreateRegionsTable extends Migration {
     public function down() {
         Schema::dropIfExists('regions');
     }
-    
+
 }

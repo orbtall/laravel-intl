@@ -11,8 +11,12 @@ class Language extends Model {
 
     protected $table = 'languages';
 
+    protected $primaryKey = 'uuid';
+
+    protected $keyType = 'string';
+
     public function locale() {
-        return $this->hasMany(Locale::class, 'country_id');
+        return $this->hasMany(Locale::class, 'country_uuid');
     }
 
 }
