@@ -16,12 +16,13 @@ class CreateLocalesTable extends Migration {
 
             $table->uuid('uuid')->unique();
 
-            $table->uuid('language_uuid');
             $table->uuid('country_uuid');
-            $table->timestamps();
-
             $table->foreign('country_uuid')->references('uuid')->on('countries');
-            $table->foreign('lenguage_uuid')->references('uuid')->on('languages');
+
+            $table->uuid('language_uuid');
+            $table->foreign('language_uuid')->references('uuid')->on('languages');
+
+            $table->timestamps();
 
             $table->unique(['country_uuid', 'language_uuid']);
 

@@ -19,11 +19,11 @@ class CreateCountriesTable extends Migration {
             $table->string('code', 2);
             $table->string('name', 100);
             $table->string('name_native', 100);
+
             $table->uuid('region_uuid');
+            $table->foreign('region_uuid')->references('uuid')->on('regions');
 
             $table->timestamps();
-
-            $table->foreign('region_uuid')->references('uuid')->on('regions');
 
             $table->unique('code');
 
