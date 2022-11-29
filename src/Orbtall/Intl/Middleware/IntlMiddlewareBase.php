@@ -2,9 +2,10 @@
 
 namespace Orbtall\Intl\Middleware;
 
+use Orbtall\Models\IgnoredRoute;
 
-class IntlMiddlewareBase
-{
+class IntlMiddlewareBase {
+
     /**
      * The URIs that should not be localized.
      *
@@ -44,4 +45,5 @@ class IntlMiddlewareBase
 
         return false;
     }
+
 }
