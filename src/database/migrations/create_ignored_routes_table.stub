@@ -23,7 +23,7 @@ class CreateIgnoredRoutesTable extends Migration {
 
             $table->timestamps();
 
-            $table->unique('code');
+            $table->unique('route');
 
         });
     }
