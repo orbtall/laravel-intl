@@ -480,9 +480,9 @@ class Intl
             $locales = $this->configRepository->get('intl.supportedLocales');
         }
 
-        if (empty($locales)) {
-            throw new SupportedLocalesNotDefined();
-        }
+        // if (empty($locales)) {
+        //     throw new SupportedLocalesNotDefined();
+        // }
 
         $this->supportedLocales = $locales;
 

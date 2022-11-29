@@ -41,6 +41,12 @@ class IntlServiceProvider extends ServiceProvider
             ], 'migrations');
         }
 
+        if (! class_exists('CreateIgnoredRoutesTable')) {
+            $this->publishes([
+              __DIR__ . '/../../database/migrations/create_ignored_routes_table.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '5_create_ignored_routes_table.php'),
+            ], 'migrations');
+        }
+
     }
 
     /**

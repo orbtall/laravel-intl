@@ -18,20 +18,28 @@ class IntlMiddlewareBase
      * @param  \Illuminate\Http\Request  $request
      * @return bool
      */
-    protected function shouldIgnore($request)
-    {
+    protected function shouldIgnore($request) {
+
         if (in_array($request->method(), config('intl.httpMethodsIgnored'))) {
             return true;
         }
-        $this->except = $this->except ?? config('intl.urlsIgnored', []);
+
+        $this->except = IgnoredRoute::get();
+
         foreach ($this->except as $except) {
-            if ($except !== '/') {
-                $except = trim($except, '/');
+
+            if ($except->route) {
+
+                if ($except->route !== '/') {
+                    $except_route = trim($except->route, '/');
+                }
+
+                if ($request->is($except_route)) {
+                    return true;
+                }
+
             }
 
-            if ($request->is($except)) {
-                return true;
-            }
         }
 
         return false;
