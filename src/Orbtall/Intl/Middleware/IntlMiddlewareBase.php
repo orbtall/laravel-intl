@@ -2,7 +2,7 @@
 
 namespace Orbtall\Intl\Middleware;
 
-use Orbtall\Models\IgnoredRoute;
+use Orbtall\Intl\Models\IgnoredRoute;
 
 class IntlMiddlewareBase {
 
