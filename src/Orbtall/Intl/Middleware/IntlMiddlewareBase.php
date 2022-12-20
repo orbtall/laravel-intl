@@ -39,6 +39,20 @@ class IntlMiddlewareBase {
                     return true;
                 }
 
+                $routes = explode('/', $except->route);
+
+                foreach ($routes as $route) {
+
+                    if ($route == '') {
+                        continue;
+                    }
+
+                    if ($request->is($route)) {
+                        return true;
+                    }
+
+                }
+
             }
 
         }
