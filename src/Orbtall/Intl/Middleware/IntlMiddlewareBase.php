@@ -43,7 +43,7 @@ class IntlMiddlewareBase {
 
                 foreach ($routes as $route) {
 
-                    if ($route == '') {
+                    if ($route == '' || $route == '*') {
                         continue;
                     }
 
