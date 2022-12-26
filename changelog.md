@@ -1,3 +1,7 @@
+## v1.0.3
+
++ Fix class without import
+
 ## v1.0.2
 
 + Fix ignored routes when file

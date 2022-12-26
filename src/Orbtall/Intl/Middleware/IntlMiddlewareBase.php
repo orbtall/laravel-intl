@@ -2,6 +2,8 @@
 
 namespace Orbtall\Intl\Middleware;
 
+use Illuminate\Support\Facades\Schema;
+
 use Orbtall\Intl\Models\IgnoredRoute;
 
 class IntlMiddlewareBase {
