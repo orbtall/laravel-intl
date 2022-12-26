@@ -1,3 +1,7 @@
+## v1.0.4
+
++ Fix null variable
+
 ## v1.0.3
 
 + Fix class without import
