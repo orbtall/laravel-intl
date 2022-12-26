@@ -299,7 +299,12 @@ class Intl
 
         $base_path = $this->request->getBaseUrl();
         $parsed_url = parse_url($url);
-        $url_locale = Locale::first();
+
+        if (Schema::hasTable('locales') && Schema::hasTable('countries') && Schema::hasTable('languages') && $this->configRepository->get('intl.driver') == 'database') {
+            $url_locale = Locale::first();
+        } else {
+            $url_locale =  $this->getDefaultLocale();
+        }
 
         if (!$parsed_url || empty($parsed_url['path'])) {
             $path = $parsed_url['path'] = '';
