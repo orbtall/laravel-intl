@@ -25,7 +25,11 @@ class IntlMiddlewareBase {
             return true;
         }
 
-        $this->except = IgnoredRoute::get();
+        if (Schema::hasTable('ignored_routes') && $this->configRepository->get('intl.driver') == 'database') {
+            $this->except = IgnoredRoute::get();
+        } else {
+            $this->except ?? config('laravellocalization.urlsIgnored', []);
+        }
 
         foreach ($this->except as $except) {
 
